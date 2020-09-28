@@ -29,15 +29,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68fba455-0eac-4b8f-a9bd-b38bc102ca88" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sunrise/shop/controller/RequestPojo/SearchForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrise/shop/Repository/ProductRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunrise/shop/Repository/ProductRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sunrise/shop/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sunrise/shop/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sunrise/shop/Repository/ProductRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sunrise/shop/Repository/ProductRepo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/sunrise/shop/controller/ProductController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sunrise/shop/controller/ProductController.class" afterDir="false" />
-    </list>
+    <list default="true" id="68fba455-0eac-4b8f-a9bd-b38bc102ca88" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -153,6 +145,7 @@
       <workItem from="1601227897820" duration="1664000" />
       <workItem from="1601255951108" duration="5694000" />
       <workItem from="1601286504939" duration="2749000" />
+      <workItem from="1601295830391" duration="597000" />
     </task>
     <servers />
   </component>
