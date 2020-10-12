@@ -16,7 +16,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-
+//  kiểm tra request của người dùng trước khi nó tới đích
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
 //	@Autowired
@@ -41,9 +41,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 Long userId = tokenProvider.getUserIdFromJWT(jwt);
 
                 /*
-                    Note that you could also encode the user's username and roles inside JWT claims
-                    and create the UserDetails object by parsing those claims from the JWT.
-                    That would avoid the following database hit. It's completely up to you.
+                    Lưu ý rằng bạn cũng có thể mã hóa tên người dùng và vai trò của người dùng bên trong các xác nhận quyền sở hữu JWT
+                    và tạo đối tượng UserDetails bằng cách phân tích cú pháp các tuyên bố đó từ JWT.
+                    Điều đó sẽ tránh được lần truy cập cơ sở dữ liệu sau đây. Nó hoàn toàn phụ thuộc vào bạn.
                  */
                 logger.info("login user id is "+userId);
              // Lấy thông tin người dùng từ id

@@ -22,9 +22,11 @@ public class JwtTokenProvider {
     //private static final Logger logger = LoggerFactory.getLogger(JwtTokenProvider.class);
 	private static final Logger logger = LogManager.getLogger(JwtTokenProvider.class);
 
+    // Đoạn JWT_SECRET này là bí mật, chỉ có phía server biết
     @Value("${app.jwtSecret}")
     private String jwtSecret;
 
+    //Thời gian có hiệu lực của chuỗi jwt
     @Value("${app.jwtExpirationInMs}") //604800000
     private int jwtExpirationInMs;
     //Tạo ra token từ chuỗi authentication
@@ -34,7 +36,7 @@ public class JwtTokenProvider {
 
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + jwtExpirationInMs);
-        // mã hóa token 
+         // Tạo chuỗi json web token từ id của user.
         return Jwts.builder()
                 .setSubject(Long.toString(userPrincipal.getId()))
                 .setIssuedAt(new Date())

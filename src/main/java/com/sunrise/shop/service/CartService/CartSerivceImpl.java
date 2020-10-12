@@ -73,6 +73,10 @@ public class CartSerivceImpl implements CartService {
 		System.out.print("Error from request "+total_amount +" --db-- "+ totalAmount);
 		return false;
 	}
+	@Override
+	public List<CheckoutCart> getAllCheckoutList() {
+		return checkOutRepo.findAll();
+	}
 
 	@Override
 	public List<CheckoutCart> getAllCheckoutByUserId(long userId) {

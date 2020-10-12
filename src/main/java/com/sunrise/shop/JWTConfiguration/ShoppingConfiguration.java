@@ -2,7 +2,7 @@ package com.sunrise.shop.JWTConfiguration;
 
 import java.util.HashMap;
 
-public class ShoppingConfiguration {
+public class  ShoppingConfiguration {
 
 	public static Boolean validationWithHashMap(String keys[],HashMap<String,String> request) throws Exception{
 		Boolean status = false;

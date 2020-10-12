@@ -15,6 +15,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+//cấu hình Spring Security
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(
@@ -57,7 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	    @Override
 	    protected void configure(HttpSecurity http) throws Exception {
 	        http
-	                .cors()
+	                .cors()  // Ngăn chặn request từ một domain khác
 	                    .and()
 	                .csrf()
 	                    .disable()
@@ -77,7 +78,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	                        "/**/*.html",
 	                        "/**/*.css",
 	                        "/**/*.js")
-	                        .permitAll()
+	                        .permitAll()// Cho phép tất cả mọi người truy cập vào địa chỉ này
 	                    .antMatchers("/api/status/**","/api/login/**","/api/signup/**")// Cho phép tất cả mọi người truy cập vào địa chỉ này
 	                        .permitAll()
 //	                    .antMatchers("/api/user/checkUsernameAvailability", "/api/user/checkEmailAvailability")

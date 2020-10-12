@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import com.sunrise.shop.model.AddtoCart;
 import com.sunrise.shop.model.CheckoutCart;
-import com.sunrise.shop.model.Products;
 @Service
 public interface CartService {
 	List<AddtoCart> addCartbyUserIdAndProductId(long productId,long userId,int qty,double price) throws Exception;
@@ -17,7 +16,7 @@ public interface CartService {
 	Boolean checkTotalAmountAgainstCart(double totalAmount,long userId);
 	List<CheckoutCart> getAllCheckoutByUserId(long userId);
 	List<CheckoutCart> saveProductsForCheckout(List<CheckoutCart> tmp)  throws Exception;
-	
+	List<CheckoutCart> getAllCheckoutList();
 	
 	//CheckOutCart
 }

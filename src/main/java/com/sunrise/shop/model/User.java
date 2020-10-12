@@ -6,6 +6,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
+// class User tham chiếu với database
 public class User {
 	@Id
 	long id;

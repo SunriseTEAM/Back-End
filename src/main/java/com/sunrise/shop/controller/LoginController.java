@@ -1,5 +1,6 @@
 package com.sunrise.shop.controller;
 
+import java.security.Principal;
 import java.util.HashMap;
 
 import org.json.JSONObject;
@@ -12,6 +13,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -60,7 +62,7 @@ public class LoginController {
     		if(obj == null) {
     			throw new Exception("Error while generating Reponse");
     		}
-    		
+
 	        return new ResponseEntity<String>(obj.toString(), HttpStatus.OK);
     	}catch(Exception e ) {
     		logger.info("Error in authenticateUser ",e);
@@ -96,5 +98,6 @@ public class LoginController {
 			logger.info("(LoginController)user id is "+userPrincipal.getId());
 			return userPrincipal.getId();
 		}
+
 	    
 }

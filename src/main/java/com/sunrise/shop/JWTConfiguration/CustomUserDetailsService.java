@@ -15,6 +15,7 @@ import com.sunrise.shop.service.UserServices.UserService;
 
 
 @Service
+//class CustomUserDetailsService tùy chỉnh
 public class CustomUserDetailsService implements UserDetailsService {
 
 	@Autowired
@@ -25,6 +26,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String mobile)
             throws UsernameNotFoundException {
     	try {
+			// Kiểm tra xem user có tồn tại trong database không?
             User user = userService.findByMobile(mobile);   
             return UserPrincipal.create(user);
     	}catch(Exception e) {
@@ -32,7 +34,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	   	}
     }
 
-    // This method is used by JWTAuthenticationFilter
+	//Phương pháp này được sử dụng bởi JWTAuthenticationFilter
     @Transactional
     public UserDetails loadUserById(Long id) {
     	try {
