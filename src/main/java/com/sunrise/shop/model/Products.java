@@ -10,10 +10,60 @@ import javax.persistence.Table;
 public class Products {
 	@Id
 	long id;
-	String name,price,added_on,category_id;
+	String name,price,description,quatityavi, added_on,category_id,ratings,favourite,seller,ImageUrl;
+
 	public long getId() {
 		return id;
 	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getQuatityavi() {
+		return quatityavi;
+	}
+
+	public void setQuatityavi(String quatityavi) {
+		this.quatityavi = quatityavi;
+	}
+
+	public String getRatings() {
+		return ratings;
+	}
+
+	public void setRatings(String ratings) {
+		this.ratings = ratings;
+	}
+
+	public String getFavourite() {
+		return favourite;
+	}
+
+	public void setFavourite(String favourite) {
+		this.favourite = favourite;
+	}
+
+	public String getSeller() {
+		return seller;
+	}
+
+	public void setSeller(String seller) {
+		this.seller = seller;
+	}
+
+	public String getImageUrl() {
+		return ImageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		ImageUrl = imageUrl;
+	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
