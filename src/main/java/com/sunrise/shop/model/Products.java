@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class Products {
 	@Id
 	long id;
-	String name,price,description,quatityavi, added_on,category_id,ratings,favourite,seller,ImageUrl;
+	String name,price,description,quatityavi, added_on,category_id,ratings,favourite,seller;
 
 	public long getId() {
 		return id;
@@ -54,14 +54,6 @@ public class Products {
 
 	public void setSeller(String seller) {
 		this.seller = seller;
-	}
-
-	public String getImageUrl() {
-		return ImageUrl;
-	}
-
-	public void setImageUrl(String imageUrl) {
-		ImageUrl = imageUrl;
 	}
 
 	public void setId(long id) {

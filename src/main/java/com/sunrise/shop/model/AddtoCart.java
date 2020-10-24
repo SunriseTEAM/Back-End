@@ -29,10 +29,7 @@ public class AddtoCart {
 	Long user_id;
 	@Column(updatable=false, insertable=false)
 	String added_date;
-	
-	@Transient
-	String productName;
-	
+
 	public int getQty() {
 		return qty;
 	}
@@ -70,7 +67,5 @@ public class AddtoCart {
 		this.product = product;
 	}
 
-	public String getProductName() {
-		return product.getName();
-	}
+
 }
