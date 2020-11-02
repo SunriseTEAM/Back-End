@@ -20,7 +20,7 @@ import java.util.List;
 @RequestMapping("api/user")
 public class UserController {
     @Autowired
-    UserDetailsService userDetailservice;
+    UserDetailsService userDetailsService;
     @Autowired
     UserService userService;
     @Autowired
@@ -42,5 +42,4 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
         }
     }
-
 }

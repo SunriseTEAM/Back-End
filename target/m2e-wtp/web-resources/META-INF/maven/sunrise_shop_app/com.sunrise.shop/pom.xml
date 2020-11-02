@@ -57,11 +57,13 @@
 			  <groupId>org.springframework.boot</groupId>
 			  <artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+<!--     thư viện io.jsonwebtoken.jwtt để giúp chúng ta mã hóa thông tin thành jwt		-->
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt</artifactId>
 			<version>${jjwt.version}</version>
 		</dependency>
+<!--		-->
 	</dependencies>
 
 	<build>
