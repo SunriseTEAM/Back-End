@@ -54,4 +54,17 @@ public class UserServiceImpl implements UserService {
         }
 
     }
+    public boolean checkExistedUser(long id) {
+        if(userRepo.existsById((long) id)) {
+            return true;
+        }
+        return false;
+    }
+
+    public User updateUser(User user) {
+        return userRepo.save(user);
+    }
+    public User saveUser(User user) {
+        return userRepo.save(user);
+    }
 }

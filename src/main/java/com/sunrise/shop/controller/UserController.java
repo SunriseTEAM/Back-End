@@ -9,10 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,6 +30,17 @@ public class UserController {
         return userServiceimpl.getAllUser();
     }
 
+    @PostMapping("/create")
+    public ResponseEntity<?> addNewCustomer(@RequestBody User user) {
+        try {
+            User returnedUser = userServiceimpl.saveUser(user);
+
+            return new ResponseEntity(new String("thanh cong"), HttpStatus.OK);
+        }catch(Exception e) {
+            return new ResponseEntity(new String("Lỗi"), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @DeleteMapping("/deleteUser/{id}")
     public ResponseEntity<HttpStatus> deleteUser(@PathVariable("id") long id) {
         try {
@@ -40,6 +48,31 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
+        }
+    }
+
+    @PutMapping("/updatebyid/{id}")
+    public ResponseEntity<HttpStatus> updateUserById(@RequestBody User user, @PathVariable long id) {
+        try {
+            if(userServiceimpl.checkExistedUser(id)) {
+                User user1 = userServiceimpl.getUserDetailById(id);
+
+                //set new values for user
+//                user1.setName(user.getName());
+//                user1.setEmail(user.getEmail());
+//                user1.setAddress(user.getAddress());
+//                user1.setMobile(user.getMobile());
+                user.setPassword(user1.getPassword());
+                user.setAddress(user1.getAddress());
+                // save the change to database
+                userServiceimpl.updateUser(user);
+
+                return new ResponseEntity<>(HttpStatus.OK);
+            }else {
+                return new ResponseEntity<>( HttpStatus.NOT_FOUND);
+            }
+        }catch(Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

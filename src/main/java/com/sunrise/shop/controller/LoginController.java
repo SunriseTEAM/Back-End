@@ -71,16 +71,15 @@ public class LoginController {
 		
 	}
 	 private JSONObject getUserResponse(String token) {
-	    	
 	    	try {
 				User user = userservice.getUserDetailById(_getUserId());
 				HashMap<String,String> response = new HashMap<String,String>();
 				response.put("user_id", ""+_getUserId());
 				response.put("email", user.getEmail());
 				response.put("name", user.getName());
+				response.put("created_at", user.getCreated_at());
 				response.put("mobile", user.getMobile());
-				
-			
+				response.put("address", user.getAddress());
 				JSONObject obj = new JSONObject();
 				
 				obj.put("user_profile_details",response);
