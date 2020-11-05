@@ -63,7 +63,7 @@ public class UserController {
 //                user1.setAddress(user.getAddress());
 //                user1.setMobile(user.getMobile());
                 user.setPassword(user1.getPassword());
-                user.setAddress(user1.getAddress());
+//                user.setAddress(user1.getAddress());
                 // save the change to database
                 userServiceimpl.updateUser(user);
 
