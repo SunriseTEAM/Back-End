@@ -82,7 +82,7 @@ public class ProductController {
 
 			Products product = productServiceslmpl.getProductById(id).get();
 
-			//set new values for customer
+			//set new values for products
 			product.setName(_product.getName());
 			product.setPrice(_product.getPrice());
 			product.setImages(_product.getImages());
