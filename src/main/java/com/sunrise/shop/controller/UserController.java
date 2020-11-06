@@ -54,29 +54,27 @@ public class UserController {
     }
 
     @PutMapping("/updatebyid/{id}")
-    public ResponseEntity<?> updateUserById(@RequestBody User _user, @PathVariable long id) {
+    public ResponseEntity<HttpStatus> updateUserById(@RequestBody User user, @PathVariable long id) {
         try {
+            if(userServiceimpl.checkExistedUser(id)) {
+                User user1 = userServiceimpl.getUserDetailById(id);
 
-           User user = userServiceimpl.getUserDetailById(id);
+                //set new values for user
+//                user1.setName(user.getName());
+//                user1.setEmail(user.getEmail());
+//                user1.setAddress(user.getAddress());
+//                user1.setMobile(user.getMobile());
+                user.setPassword(user1.getPassword());
+//                user.setAddress(user1.getAddress());
+                // save the change to database
+                userServiceimpl.updateUser(user);
 
-            //set new values for customer
-            user.setName(_user.getName());
-            user.setEmail(_user.getEmail());
-            user.setPassword(_user.getPassword());
-            user.setCreated_at(_user.getCreated_at());
-            user.setLogin_token(_user.getLogin_token());
-            user.setType(_user.getType());
-            user.setAddress(_user.getAddress());
-            user.setIs_email_verified(_user.getIs_email_verified());
-            user.setMobile(_user.getMobile());
-
-            // save the change to database
-            userServiceimpl.updateUser(user);
-
-            return new ResponseEntity<>(Arrays.asList(user,""),HttpStatus.OK);
-
+                return new ResponseEntity<>(HttpStatus.OK);
+            }else {
+                return new ResponseEntity<>( HttpStatus.NOT_FOUND);
+            }
         }catch(Exception e) {
-            return new ResponseEntity(new String ("lỗi"), HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }
