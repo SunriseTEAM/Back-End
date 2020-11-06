@@ -16,6 +16,5 @@ public interface CategoryRepo  extends JpaRepository<Category, Long> {
     @Override
     Page<Category> findAll(Pageable pageable);
     Optional<Category> findById(long id);
-    //cho nay ko dien may cai kia nha vk loi
-    //dạ ck
+
 }

@@ -16,16 +16,15 @@ import com.sunrise.shop.JWTConfiguration.ShoppingConfiguration;
 import com.sunrise.shop.controller.RequestPojo.ApiResponse;
 import com.sunrise.shop.model.AddtoCart;
 import com.sunrise.shop.model.CheckoutCart;
-import com.sunrise.shop.model.Products;
 import com.sunrise.shop.service.CartService.CartService;
-import com.sunrise.shop.service.ProductService.ProductServices;
+import com.sunrise.shop.service.ProductService.ProductServiceslmpl;
 
 @RestController
 @RequestMapping("api/order")
 public class OrderController {
     @Autowired
     CartService cartService;
-    ProductServices proService;
+    ProductServiceslmpl proService;
     CartSerivceImpl cartServiceimpl;
 
     @RequestMapping("getAll")

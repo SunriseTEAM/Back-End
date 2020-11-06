@@ -12,7 +12,7 @@ import com.sunrise.shop.Repository.CheckoutRepo;
 import com.sunrise.shop.model.AddtoCart;
 import com.sunrise.shop.model.CheckoutCart;
 import com.sunrise.shop.model.Products;
-import com.sunrise.shop.service.ProductService.ProductServices;
+import com.sunrise.shop.service.ProductService.ProductServiceslmpl;
 
 @Service
 public class CartSerivceImpl implements CartService {
@@ -22,7 +22,7 @@ public class CartSerivceImpl implements CartService {
 	@Autowired
 	CheckoutRepo checkOutRepo;
 	@Autowired
-	ProductServices proServices;
+    ProductServiceslmpl proServices;
     private static final Logger logger = LoggerFactory.getLogger(CartSerivceImpl.class);
 
 	@Override
@@ -34,8 +34,7 @@ public class CartSerivceImpl implements CartService {
 			AddtoCart obj = new AddtoCart();
 			obj.setQty(qty);
 			obj.setUser_id(userId);
-			Products pro = proServices.getProductsById(productId);
-			obj.setProduct(pro); 
+
 			//TODO price has to check with qty
 			obj.setPrice(price);
 			addCartRepo.save(obj);		
