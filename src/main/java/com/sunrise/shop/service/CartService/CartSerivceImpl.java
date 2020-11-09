@@ -26,7 +26,7 @@ public class CartSerivceImpl implements CartService {
     private static final Logger logger = LoggerFactory.getLogger(CartSerivceImpl.class);
 
 	@Override
-	public List<AddtoCart> addCartbyUserIdAndProductId(long productId, long userId,int qty,double price) throws Exception {
+	public List<AddtoCart> addCartbyUserIdAndProductId(long productId, long userId,String name,int qty,double price) throws Exception {
 		try {
 			if(addCartRepo.getCartByProductIdAnduserId(userId, productId).isPresent()){
 				throw new Exception("Product is already exist.");
@@ -34,6 +34,7 @@ public class CartSerivceImpl implements CartService {
 			AddtoCart obj = new AddtoCart();
 			obj.setQty(qty);
 			obj.setUser_id(userId);
+			obj.setName(name);
 
 			//TODO price has to check with qty
 			obj.setPrice(price);
