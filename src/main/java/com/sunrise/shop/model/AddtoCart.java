@@ -27,8 +27,15 @@ public class AddtoCart {
 	int qty;
 	double price;
 	Long user_id;
+	String name;
 	@Column(updatable=false, insertable=false)
 	String added_date;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public int getQty() {
 		return qty;
