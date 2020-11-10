@@ -2,6 +2,7 @@ package com.sunrise.shop.service.CartService;
 
 import java.util.List;
 
+import com.sunrise.shop.service.UserServices.impl.UserServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,8 @@ public class CartSerivceImpl implements CartService {
 	CheckoutRepo checkOutRepo;
 	@Autowired
     ProductServiceslmpl proServices;
+	@Autowired
+	UserServiceImpl useServices;
     private static final Logger logger = LoggerFactory.getLogger(CartSerivceImpl.class);
 
 	@Override
@@ -32,14 +35,14 @@ public class CartSerivceImpl implements CartService {
 				throw new Exception("Product is already exist.");
 			}
 			AddtoCart obj = new AddtoCart();
+			obj.setProduct(proServices.getProductById(productId).get());
 			obj.setQty(qty);
 			obj.setUser_id(userId);
 			obj.setName(name);
 
-			//TODO price has to check with qty
 			obj.setPrice(price);
 			addCartRepo.save(obj);		
-			return this.getCartByUserId(userId);	
+			return this.getCartByUserId(userId);
 		}catch(Exception e) {
 			e.printStackTrace();
 			logger.error(""+e.getMessage());
