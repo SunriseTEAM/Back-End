@@ -37,7 +37,7 @@ public class CartSerivceImpl implements CartService {
 			AddtoCart obj = new AddtoCart();
 			obj.setProduct(proServices.getProductById(productId).get());
 			obj.setQty(qty);
-			obj.setUser_id(userId);
+			obj.setUser(useServices.getUserDetailById(userId));
 			obj.setName(name);
 
 			obj.setPrice(price);

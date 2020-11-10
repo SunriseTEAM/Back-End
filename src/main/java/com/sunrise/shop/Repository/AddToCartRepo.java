@@ -19,26 +19,26 @@ public interface AddToCartRepo extends JpaRepository<AddtoCart,Long> {
 	//remove cart by userid and cartId,
 	//getCartByuserId
 	
-	@Query("Select sum(addCart.price) FROM AddtoCart addCart WHERE addCart.user_id=:user_id")
+	@Query("Select sum(addCart.price) FROM AddtoCart addCart WHERE addCart.user.id=:user_id")
 	double getTotalAmountByUserId(@Param("user_id")Long user_id);
-	@Query("Select addCart  FROM AddtoCart addCart WHERE addCart.user_id=:user_id")
+	@Query("Select addCart FROM AddtoCart addCart WHERE addCart.user.id=:user_id")
 	List<AddtoCart> getCartByuserId(@Param("user_id")Long user_id);
-	@Query("Select addCart  FROM AddtoCart addCart ")
+	@Query("Select addCart FROM AddtoCart addCart ")
 	Optional<AddtoCart> getCartByuserIdtest();
-	@Query("Select addCart  FROM AddtoCart addCart WHERE addCart.product.id= :product_id and addCart.user_id=:user_id")
+	@Query("Select addCart  FROM AddtoCart addCart WHERE addCart.product.id= :product_id and addCart.user.id=:user_id")
 	Optional<AddtoCart> getCartByProductIdAnduserId(@Param("user_id")Long user_id,@Param("product_id")Long product_id);
 	@Modifying
     @Transactional
-	@Query("DELETE  FROM AddtoCart addCart WHERE addCart.id =:cart_id   and addCart.user_id=:user_id")
+	@Query("DELETE  FROM AddtoCart addCart WHERE addCart.id =:cart_id   and addCart.user.id=:user_id")
 	void deleteCartByIdAndUserId(@Param("user_id")Long user_id,@Param("cart_id")Long cart_id);
 	@Modifying
     @Transactional
-	@Query("DELETE  FROM AddtoCart addCart WHERE   addCart.user_id=:user_id")
+	@Query("DELETE  FROM AddtoCart addCart WHERE   addCart.user.id=:user_id")
 	void deleteAllCartByUserId(@Param("user_id")Long user_id);
 	
 	@Modifying
     @Transactional
-	@Query("DELETE  FROM AddtoCart addCart WHERE addCart.user_id=:user_id")
+	@Query("DELETE  FROM AddtoCart addCart WHERE addCart.user.id=:user_id")
 	void deleteAllCartUserId(@Param("user_id")Long user_id);
 	@Modifying
     @Transactional

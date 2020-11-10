@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sunrise.shop.JWTConfiguration.ShoppingConfiguration;
@@ -29,7 +30,7 @@ public class AddtoCartController {
 				
 			}
 			long productId = Long.parseLong(addCartRequest.get("productId")); 
-			long userId =  Long.parseLong(addCartRequest.get("userId")); 
+			long userId =  Long.parseLong(addCartRequest.get("userId"));
 			String name = addCartRequest.get("name");
 			int qty =  Integer.parseInt(addCartRequest.get("qty")); 
 			double price = Double.parseDouble(addCartRequest.get("price"));
@@ -50,7 +51,7 @@ public class AddtoCartController {
 				
 			}
 			long cartId = Long.parseLong(addCartRequest.get("cartId")); 
-			long userId =  Long.parseLong(addCartRequest.get("userId")); 
+			long userId =  Long.parseLong(addCartRequest.get("userId"));
 			int qty =  Integer.parseInt(addCartRequest.get("qty")); 
 			double price = Double.parseDouble(addCartRequest.get("price"));
 			 cartService.updateQtyByCartId(cartId, qty, price);
@@ -77,8 +78,8 @@ public class AddtoCartController {
 				return ResponseEntity.badRequest().body(new ApiResponse(e.getMessage(), ""));
 		}		
    }
-	
-	@RequestMapping("getCartsByUserId")
+
+	@RequestMapping(value = "getCartsByUserId",method = RequestMethod.POST)
   	public ResponseEntity<?> getCartsByUserId(@RequestBody HashMap<String,String> getCartRequest) {
 		try {
 			String keys[] = {"userId"};
