@@ -25,16 +25,17 @@ public class AddtoCartController {
 	@RequestMapping("addProduct")
   	public ResponseEntity<?> addCartwithProduct(@RequestBody HashMap<String,String> addCartRequest) {
 		try {
-			String keys[] = {"productId","userId","name","qty","price"};
+			String keys[] = {"productId","userId","name","images","qty","price"};
 			if(ShoppingConfiguration.validationWithHashMap(keys, addCartRequest)) {
 				
 			}
 			long productId = Long.parseLong(addCartRequest.get("productId")); 
 			long userId =  Long.parseLong(addCartRequest.get("userId"));
 			String name = addCartRequest.get("name");
+			String images = addCartRequest.get("images");
 			int qty =  Integer.parseInt(addCartRequest.get("qty")); 
 			double price = Double.parseDouble(addCartRequest.get("price"));
-			List<AddtoCart> obj = cartService.addCartbyUserIdAndProductId(productId,userId,name,qty,price);
+			List<AddtoCart> obj = cartService.addCartbyUserIdAndProductId(productId,userId,name,images,qty,price);
 			return ResponseEntity.ok(obj);
 		} catch (Exception e) {
 			e.printStackTrace();
