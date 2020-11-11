@@ -30,9 +30,15 @@ public class AddtoCart {
 	@JsonIgnore
 	User user;
 	String name;
+	String images;
 	@Column(updatable=false, insertable=false)
 	String added_date;
-
+	public String getImages() {
+		return images;
+	}
+	public void setImages(String images) {
+		this.images = images;
+	}
 	public String getName() {
 		return name;
 	}
