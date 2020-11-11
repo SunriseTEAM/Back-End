@@ -29,7 +29,7 @@ public class CartSerivceImpl implements CartService {
     private static final Logger logger = LoggerFactory.getLogger(CartSerivceImpl.class);
 
 	@Override
-	public List<AddtoCart> addCartbyUserIdAndProductId(long productId, long userId,String name,int qty,double price) throws Exception {
+	public List<AddtoCart> addCartbyUserIdAndProductId(long productId, long userId,String name,String images,int qty,double price) throws Exception {
 		try {
 			if(addCartRepo.getCartByProductIdAnduserId(userId, productId).isPresent()){
 				throw new Exception("Product is already exist.");
@@ -39,6 +39,7 @@ public class CartSerivceImpl implements CartService {
 			obj.setQty(qty);
 			obj.setUser(useServices.getUserDetailById(userId));
 			obj.setName(name);
+			obj.setImages(images);
 
 			obj.setPrice(price);
 			addCartRepo.save(obj);		
