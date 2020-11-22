@@ -1,8 +1,6 @@
 package com.sunrise.shop.controller;
 
 import com.sunrise.shop.Repository.UserRepository;
-import com.sunrise.shop.model.Category;
-import com.sunrise.shop.model.Products;
 import com.sunrise.shop.model.User;
 import com.sunrise.shop.service.UserServices.UserService;
 import com.sunrise.shop.service.UserServices.impl.UserServiceImpl;
@@ -14,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/user")
@@ -76,5 +75,9 @@ public class UserController {
         }catch(Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+    @GetMapping("/{mobile}")
+    public Optional<User> findMobile(@PathVariable(required = true) String mobile) {
+        return userRepository.findByMobile(mobile);
     }
 }
