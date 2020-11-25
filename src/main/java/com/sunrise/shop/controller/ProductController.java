@@ -14,6 +14,7 @@ import java.util.Optional;
 
 import com.sunrise.shop.Repository.ProductRepo;
 import com.sunrise.shop.controller.RequestPojo.SearchForm;
+import com.sunrise.shop.model.User;
 import com.sunrise.shop.service.FilesStorage.FilesStorageServiceImpl;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,7 @@ public class ProductController {
         return productServiceslmpl.getProductsByCategory(category_id);
     }
 
+
     @GetMapping(value = "/getimage/{img_name}", produces = MediaType.IMAGE_JPEG_VALUE)
     public @ResponseBody
     byte[] getImageWithMediaType(@PathVariable("img_name") String img_name) throws IOException {
@@ -84,7 +86,7 @@ public class ProductController {
             Optional<Products> optProduct = productServiceslmpl.getProductById(id);
 
             if (optProduct.isPresent()) {
-                return new ResponseEntity<>(Arrays.asList(optProduct.get()), HttpStatus.OK);
+                return new ResponseEntity(new String ("thành công"), HttpStatus.OK);
             } else {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
@@ -92,6 +94,13 @@ public class ProductController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+
+    @GetMapping("/productById/{id}")
+    public Optional<Products> productById(@PathVariable(value = "id") Long id) {
+        return productServiceslmpl.getProductById(id);
+    }
+
 
     @PutMapping("/updatebyid/{id}")
     public ResponseEntity<?> updateProduct(@RequestBody Products _product, @PathVariable long id) {
@@ -143,4 +152,5 @@ public class ProductController {
 //		).collect(Collectors.toList());
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
+
 }
